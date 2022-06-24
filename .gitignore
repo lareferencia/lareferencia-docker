@@ -1,0 +1,6 @@
+
+.DS_Store
+postgres/postgres_data/**
+solr/cores/oai/data/**
+solr/cores/entity/data/**
+solr/cores/vstats/data/**
