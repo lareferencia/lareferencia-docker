@@ -1,0 +1,65 @@
+<?xml version="1.0" ?>
+
+<!--
+  ~   Copyright (c) 2013-2022. LA Referencia / Red CLARA and others
+  ~
+  ~   This program is free software: you can redistribute it and/or modify
+  ~   it under the terms of the GNU Affero General Public License as published by
+  ~   the Free Software Foundation, either version 3 of the License, or
+  ~   (at your option) any later version.
+  ~
+  ~   This program is distributed in the hope that it will be useful,
+  ~   but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~   GNU Affero General Public License for more details.
+  ~
+  ~   You should have received a copy of the GNU Affero General Public License
+  ~   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  ~
+  ~   This file is part of LA Referencia software platform LRHarvester v4.x
+  ~   For any further information please contact Lautaro Matas <lmatas@gmail.com>
+  -->
+
+<schema name="RecordValidationResult" version="1.0">
+
+  <types>
+   <fieldtype name="string"  class="solr.StrField" sortMissingLast="true" omitNorms="true"/>
+   <fieldType name="long" class="solr.TrieLongField" precisionStep="0" positionIncrementGap="0"/>
+   <fieldType name="boolean" class="solr.BoolField" sortMissingLast="true"/>
+  </types>
+ 
+
+  <!-- general -->
+<fields>  
+  <field name="id"                type="string"   indexed="true"  stored="true"  multiValued="false" required="true"/>
+  <field name="oai_identifier"    type="string"   indexed="true"  stored="true"  multiValued="false" /> 
+  <field name="origin"    type="string"   indexed="true"  stored="true"  multiValued="false" /> 
+  <field name="set_spec"    type="string"   indexed="true"  stored="true"  multiValued="false" /> 
+  <field name="metadata_prefix"    type="string"   indexed="true"  stored="true"  multiValued="false" /> 
+  <field name="network_acronym"   type="string"   indexed="true"  stored="true"  multiValued="false" /> 
+  <field name="repository_name"   type="string"   indexed="true"  stored="true"  multiValued="false" /> 
+  <field name="institution_name" type="string"   indexed="true"  stored="true"  multiValued="false" /> 
+  
+  <field name="snapshot_id"      type="long"      indexed="true"  stored="true"  multiValued="false" /> 
+  <field name="record_is_valid"  type="boolean"   indexed="true"  stored="true"  multiValued="false" /> 
+  <field name="record_is_transformed"  type="boolean"   indexed="true"  stored="true"  multiValued="false" /> 
+
+
+  <field name="valid_rules" type="string" indexed="true"  stored="true" multiValued="true"/>
+  <field name="invalid_rules" type="string" indexed="true"  stored="true" multiValued="true"/>
+
+  <field name="_version_" type="long"     indexed="true"  stored="true" multiValued="false"/>
+  
+  <dynamicField name="*_rule_valid_occrs" type="string" indexed="true"  stored="true" multiValued="true"/>
+  <dynamicField name="*_rule_invalid_occrs" type="string" indexed="true"  stored="true" multiValued="true"/>
+</fields>
+ <!-- field to use to determine and enforce document uniqueness. -->
+ <uniqueKey>id</uniqueKey>
+
+ <!-- field for the QueryParser to use when an explicit fieldname is absent -->
+ <!-- defaultSearchField>id</defaultSearchField-->
+
+ <!-- SolrQueryParser configuration: defaultOperator="AND|OR" -->
+ <!-- solrQueryParser defaultOperator="OR"/-->
+</schema>
+
