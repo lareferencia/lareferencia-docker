@@ -5,7 +5,7 @@ parameters="$#"
 
 #echo "Parameters: $@"
 
-if [[ $parameters -ne 1 ]] || [[ $parameters -eq 0 ]];
+if [[ $parameters -ne 1 ]];
 then
   echo "Usage ./docker-compose.sh <parameter>"
   exit 1
