@@ -1,18 +1,21 @@
 version: '3'
 
 services:
-  mysql:
-    build: ./mysql
-    restart: always
-    hostname: mysql
-    volumes:
-      - './mysql/mysql_data:/var/lib/mysql'
-    environment:
-      - MYSQL_ROOT_PASSWORD=secret
-    ports:
-      - '3306:3306'
-    networks:
-      - lareferencia-network
+  #MySQL
+  # mysql:
+  #   build: ./mysql
+  #   restart: always
+  #   hostname: mysql
+  #   volumes:
+  #     - './mysql/mysql_data:/var/lib/mysql'
+  #   environment:
+  #     - MYSQL_ROOT_PASSWORD=secret
+  #   ports:
+  #     - '3306:3306'
+  #   networks:
+  #     - lareferencia-network
+
+  #PostgreSQL
   postgres:
     build: ./postgres
     restart: always
@@ -27,6 +30,8 @@ services:
       - '5432:5432'
     networks:
       - lareferencia-network
+
+  #Elasticsearch
   elasticsearch:
     build: ./elasticsearch
     hostname: elasticsearch
@@ -51,6 +56,7 @@ services:
     networks:
       - lareferencia-network
 
+  #Kibana
   kibana:
     hostname: kibana
     build: ./kibana
@@ -63,14 +69,31 @@ services:
     networks:
       - lareferencia-network
 
+  #Solr
   solr:
     image: "solr:7.3.1"
     ports:
       - "8983:8983"
     volumes:
-      - ./cores:/opt/solr/server/solr/mycores
+      - ./solr/cores:/opt/solr/server/solr/mycores
     networks:
       - lareferencia-network
+
+  #LaReferencia
+  lareferencia:
+    build: ./lareferencia
+    hostname: lareferencia
+    stdin_open: true # docker run -i
+    tty: true        # docker run -t
+    volumes:
+      - ./lareferencia/codigo:/home/lareferencia/codigo
+    networks:
+      - lareferencia-network
+    depends_on:
+      - kibana
+      - elasticsearch
+      - postgres
+      - solr
 networks:
   lareferencia-network:
     driver: bridge

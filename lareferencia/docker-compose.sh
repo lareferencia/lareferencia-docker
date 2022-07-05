@@ -22,9 +22,11 @@ case $1 in
     docker-compose up
     ;;
   "permissions")
-    chown -R 1000:1000 elasticsearch/elasticsearch_data
-    chown -R 1000:1000 mysql/mysql_data
-    chown -R 1000:1000 postgres/postgres_data
+    sudo chown -R 1000:1000 elasticsearch/elasticsearch_data
+    sudo chown -R 1000:1000 mysql/mysql_data
+    sudo chown -R 1000:1000 postgres/postgres_data
+    sudo chown -R 1000:1000 lareferencia/codigo
+    sudo chown -R 1000:1000 solr/cores
     ;;
   *)
     echo "Invalid arguments"
