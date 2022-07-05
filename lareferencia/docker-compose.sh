@@ -18,6 +18,9 @@ case $1 in
   "down")
     docker-compose down
     ;;
+  "stop")
+    docker-compose stop
+    ;;
   "logs")
     docker-compose up
     ;;
