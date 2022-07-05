@@ -39,6 +39,8 @@ services:
     environment:
       - xpack.security.enabled=false
       - discovery.type=single-node
+    mem_limit: 4g
+    mem_reservation: 2g
     ulimits:
       memlock:
         soft: -1
