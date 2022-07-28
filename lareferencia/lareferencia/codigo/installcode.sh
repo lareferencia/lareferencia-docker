@@ -1,5 +1,10 @@
 #!/bin/bash
 
+model=lareferencia-entity-shell/config/application.properties.model
+properties=lareferencia-entity-shell/config/application.properties
+
+# model=lareferencia-shell/config/application.properties.model
+# properties=lareferencia-shell/config/application.properties
 # if [ $# -ne 2 ]; then
 #   echo "Number of parameters wrong"
 #   echo "Usage: $0 <user> <password>"
@@ -16,8 +21,10 @@ if [ $# -ne 0 ]; then
 fi
 echo "Removing lrharverster folder"
 rm -rf lrharvester/*
+echo "Downloading lrharvester source"
+wget https://www.dropbox.com/s/29745jdtnsfa2g5/lrharvester.zip?dl=0 -O lrharvester.zip
 echo "Unzip files"
-tar -xvf lrharvester.zip
+unzip lrharvester.zip
 echo "Building lrharvester"
 cd lrharvester || exit
 ./build.sh
@@ -39,12 +46,12 @@ echo "Finished building lrharvester"
 # echo "Finished installation"
 echo "Adjusting configurations"
 cd .. || exit
-sed -i "s/localhost:5432/postgres:5432/g" lareferencia-shell/config/application.properties.model
-cp lareferencia-shell/config/application.properties.model lareferencia-shell/config/application.properties
-sed -i "s/elastic.host=localhost/elastic.host=elasticsearch/g" lareferencia-shell/config/application.properties
-sed -i "s/elastic.username/#elastic.username/g" lareferencia-shell/config/application.properties
-sed -i "s/elastic.password/#elastic.password/g" lareferencia-shell/config/application.properties
-sed -i "s/localhost:8983/solr:8983/g" lareferencia-shell/config/application.properties
+sed -i "s/localhost:5432/postgres:5432/g" $model
+cp $model $properties
+sed -i "s/elastic.host=localhost/elastic.host=elasticsearch/g" $properties
+sed -i "s/elastic.username/#elastic.username/g" $properties
+sed -i "s/elastic.password/#elastic.password/g" $properties
+sed -i "s/localhost:8983/solr:8983/g" $properties
 echo "Finished configurations"
 cd /home/lareferencia/codigo || exit
 echo "FINISHED"
