@@ -14,7 +14,7 @@ fi
 case $1 in
   "build")
     sudo chown -R 1000:1000 elasticsearch/elasticsearch_data
-    sudo chown -R 1000:1000 mysql/mysql_data
+    #sudo chown -R 1000:1000 mysql/mysql_data
     sudo chown -R 1000:1000 postgres/postgres_data
     sudo chown -R 1000:1000 lareferencia/codigo
     sudo chown -R 1000:1000 solr/cores
@@ -34,7 +34,7 @@ case $1 in
     ;;
   "permissions")
     sudo chown -R 1000:1000 elasticsearch/elasticsearch_data
-    sudo chown -R 1000:1000 mysql/mysql_data
+    # sudo chown -R 1000:1000 mysql/mysql_data
     sudo chown -R 1000:1000 postgres/postgres_data
     sudo chown -R 1000:1000 lareferencia/codigo
     sudo chown -R 1000:1000 solr/cores
