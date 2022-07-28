@@ -18,19 +18,19 @@ case $1 in
     sudo chown -R 1000:1000 postgres/postgres_data
     sudo chown -R 1000:1000 lareferencia/codigo
     sudo chown -R 1000:1000 solr/cores
-    docker-compose up -d --build
+    docker compose up -d --build
     ;;
   "up")
-    docker-compose up -d
+    docker compose up -d
     ;;
   "down")
-    docker-compose down
+    docker compose down
     ;;
   "stop")
-    docker-compose stop
+    docker compose stop
     ;;
   "logs")
-    docker-compose up
+    docker compose up
     ;;
   "permissions")
     sudo chown -R 1000:1000 elasticsearch/elasticsearch_data
