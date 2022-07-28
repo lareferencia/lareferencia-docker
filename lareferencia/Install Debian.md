@@ -77,15 +77,14 @@ docker exec -ti lareferencia_lareferencia_1 bash
 /home/lareferencia/codigo/lrharvester/lareferencia-entity-shell/entity-shell.jar
 database_info
 ```
+
 The example of output is:
 
-+-----------+---------+------------------------------------+------+---------------------+---------+
 | Category  | Version | Description                        | Type | Installed On        | State   |
-+-----------+---------+------------------------------------+------+---------------------+---------+
+|-----------|---------|------------------------------------|------|---------------------|---------|
 | Versioned | 1       | Initialize db                      | SQL  | 2022-07-28 14:47:24 | Success |
 | Versioned | 4.0.0   | Entities initialization            | SQL  | 2022-07-28 14:47:25 | Success |
 | Versioned | 4.0.1   | NetworkTablesMigrationFromV3.X     | SQL  | 2022-07-28 14:47:26 | Success |
 | Versioned | 4.0.2   | OAIRecordTablesMigrationFromV4.0.1 | SQL  | 2022-07-28 14:47:26 | Success |
 | Versioned | 4.0.3   | New Entity Model                   | SQL  | 2022-07-28 14:47:26 | Success |
 | Versioned | 4.0.4   | Entity Model Optimization          | SQL  | 2022-07-28 14:47:26 | Success |
-+-----------+---------+------------------------------------+------+---------------------+---------+
