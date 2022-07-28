@@ -62,6 +62,7 @@ services:
   kibana:
     hostname: kibana
     build: ./kibana
+    restart: always
     environment:
       - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
     ports:
@@ -74,6 +75,8 @@ services:
   #Solr
   solr:
     image: "solr:7.3.1"
+    restart: always
+    hostname: solr
     ports:
       - "8983:8983"
     volumes:
@@ -84,6 +87,7 @@ services:
   #LaReferencia
   lareferencia:
     build: ./lareferencia
+    restart: always
     hostname: lareferencia
     stdin_open: true # docker run -i
     tty: true        # docker run -t
@@ -92,9 +96,9 @@ services:
     networks:
       - lareferencia-network
     depends_on:
-      - kibana
-      - elasticsearch
       - postgres
+      - elasticsearch
+      - kibana
       - solr
 networks:
   lareferencia-network:

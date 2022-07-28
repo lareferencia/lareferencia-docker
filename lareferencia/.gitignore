@@ -4,3 +4,6 @@ elasticsearch/elasticsearch_data/*
 kibana/kibana_data/*
 lareferencia/codigo/lrharvester/*
 lareferencia/codigo/lrharvester
+lareferencia/codigo/lrharvester/lareferencia*/*
+lareferencia/codigo/lrharvester/lareferencia-plataforma/*
+lareferencia/codigo/lrharvester.zip
