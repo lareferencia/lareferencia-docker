@@ -35,12 +35,14 @@ If you receive a GPG error when running `apt-get update`, run the following comm
 sudo chmod a+r /etc/apt/keyrings/docker.gpg
 ```
 
-Docker provides a convenience script at get.docker.com to install Docker into development environments quickly and non-interactively
+<s>Docker provides a convenience script at get.docker.com to install Docker into development environments quickly and non-interactively
 
 ```bash
 curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh get-docker.sh
 ```
+</s>  
+  
 
 Install portainer at 9443 port to acess the containers remotely
 
