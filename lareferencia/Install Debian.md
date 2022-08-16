@@ -62,7 +62,7 @@ To install lareferencia, run the following command, REMEMBER TO CHANGE USER AND 
   cd lareferencia-docker
   cd lareferencia
   ./docker-compose.sh build
-  docker exec -ti lareferencia_lareferencia-1 bash
+  docker exec -ti lareferencia-lareferencia-1 bash
   ./installcode.sh
   ./docker-compose.sh permissions
   exit
