@@ -54,7 +54,7 @@ docker run -d -p 8000:8000 -p 9443:9443 --name portainer \
     portainer/portainer-ce:latest
 ```
 
-The portainer is running at <http://localhost:9443/>. To remote access, change the localhost to ip address of server.
+The portainer is running at <http://localhost:9443/>. To remote access, change the localhost to ip address of server. Enter in link to configure portainer to manager the docker remotely.
 
 To install lareferencia, run the following command, REMEMBER TO CHANGE USER AND PASSWORD:
 
