@@ -29,7 +29,7 @@ docker
 │   ├── Dockerfile
 │   └── postgress.conf
 ├── solr
-|   └── cores
+│   └── cores
 ├── Install Debian.md
 ├── Install Ubuntu.md
 ├── README.md
