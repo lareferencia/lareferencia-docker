@@ -1,6 +1,6 @@
 # Docker Compose
 
-A project to create a infrastructure to run Lareferencia project.
+A project to create a infrastructure to run Lareferencia project in development. The code can be used [here](https://github.com/lareferencia/lareferencia-docker/tree/main/lareferencia) (folder la-referencia). Use the installation instructions to start.
 
 ## Authors
 
@@ -29,10 +29,20 @@ docker
 │   ├── Dockerfile
 │   └── postgress.conf
 ├── solr
-    └── cores
+|   └── cores
+├── Install Debian.md
+├── Install Ubuntu.md
+├── README.md
+├── docker-compose.sh
+├── docker-compose.yml
 ```
 
-## Commands
+
+## Installation
+
+Follow the tutorial in [Debian](https://github.com/lareferencia/lareferencia-docker/blob/main/lareferencia/Install%20Debian.md) and [Ubuntu](https://github.com/lareferencia/lareferencia-docker/blob/main/lareferencia/Install%20Ubuntu.md).
+
+## Commands to use docker-compose.sh
 
 ### To up the containers
 
