@@ -63,7 +63,7 @@ To install lareferencia, run the following command, REMEMBER TO CHANGE USER AND 
   cd lareferencia-docker
   cd lareferencia
   ./docker-compose.sh build
-  docker exec -ti lareferencia_lareferencia_1 bash
+  docker exec -ti lareferencia-lareferencia-1 bash
   ./installcode.sh
   ./docker-compose.sh permissions
   chmod -R 777 /opt/lareferencia-docker/
@@ -77,7 +77,7 @@ The elastic search is running a <http://localhost:9200/>. to remote access chang
 Testing code:
 
 ```bash
-docker exec -ti lareferencia_lareferencia_1 bash
+docker exec -ti lareferencia-lareferencia-1 bash
 /home/lareferencia/codigo/lrharvester/lareferencia-entity-shell/entity-shell.jar
 database_info
 ```
