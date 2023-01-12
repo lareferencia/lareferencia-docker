@@ -1,3 +1,4 @@
+.DS_Store
 postgres/postgres_data/*
 mysql/mysql_data/*
 elasticsearch/elasticsearch_data/*
@@ -7,3 +8,6 @@ lareferencia/codigo/lrharvester
 lareferencia/codigo/lrharvester/lareferencia*/*
 lareferencia/codigo/lrharvester/lareferencia-plataforma/*
 lareferencia/codigo/lrharvester.zip
+solr/cores/oai/data/**
+solr/cores/entity/data/**
+solr/cores/vstats/data/**
