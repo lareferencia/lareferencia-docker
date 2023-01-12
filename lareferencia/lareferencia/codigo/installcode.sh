@@ -1,7 +1,7 @@
 #!/bin/bash
 
-model=lareferencia-entity-shell/config/application.properties.model
-properties=lareferencia-entity-shell/config/application.properties
+model=/home/lareferencia/lrharvester/lareferencia-entity-shell/config/application.properties.model
+properties=/home/lareferencia/lrharvester/lareferencia-entity-shell/config/application.properties
 
 # model=lareferencia-shell/config/application.properties.model
 # properties=lareferencia-shell/config/application.properties
@@ -20,7 +20,7 @@ if [ $# -ne 0 ]; then
   exit 1
 fi
 echo "Removing lrharverster folder"
-rm -rf lrharvester/*
+rm -rf lrharvester
 echo "Downloading lrharvester source"
 wget https://www.dropbox.com/s/29745jdtnsfa2g5/lrharvester.zip?dl=0 -O lrharvester.zip
 echo "Unzip files"
