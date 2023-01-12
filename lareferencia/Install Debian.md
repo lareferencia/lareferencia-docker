@@ -66,8 +66,9 @@ To install lareferencia, run the following command, REMEMBER TO CHANGE USER AND 
   ./docker-compose.sh build
   docker exec -ti lareferencia-lareferencia-1 bash
   ./installcode.sh
-  ./docker-compose.sh permissions
   exit
+  ./docker-compose.sh permissions
+  chmod -R 777 /opt/lareferencia-docker/  
 ```
 
 The kibana is running at <http://localhost:5601/>. To remote access change the localhost to ip address of server.
@@ -77,7 +78,7 @@ The elastic search is running a <http://localhost:9200/>. to remote access chang
 Testing code:
 
 ```bash
-docker exec -ti lareferencia_lareferencia-1 bash
+sudo docker exec -ti lareferencia-lareferencia-1 bash
 /home/lareferencia/codigo/lrharvester/lareferencia-entity-shell/entity-shell.jar
 database_info
 ```
