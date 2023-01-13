@@ -3,6 +3,7 @@ postgres/postgres_data/*
 mysql/mysql_data/*
 elasticsearch/elasticsearch_data/*
 kibana/kibana_data/*
+lareferencia/*
 lareferencia/codigo/lrharvester/*
 lareferencia/codigo/lrharvester
 lareferencia/codigo/lrharvester/lareferencia*/*
