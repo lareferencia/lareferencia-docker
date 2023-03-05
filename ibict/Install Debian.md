@@ -41,8 +41,8 @@ sudo chmod a+r /etc/apt/keyrings/docker.gpg
 curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh get-docker.sh
 ```
-</s>  
-  
+</s>
+
 
 Install portainer at 9443 port to acess the containers remotely
 
@@ -62,13 +62,13 @@ To install lareferencia, run the following command, REMEMBER TO CHANGE USER AND 
   cd /opt
   git clone https://<user>:<password>@github.com/lareferencia/lareferencia-docker.git
   cd lareferencia-docker
-  cd lareferencia
+  cd ibict
   ./docker-compose.sh build
-  docker exec -ti lareferencia-lareferencia-1 bash
+  docker exec -ti ibict-lareferencia-1 bash
   ./installcode.sh
   exit
   ./docker-compose.sh permissions
-  chmod -R 777 /opt/lareferencia-docker/  
+  chmod -R 777 /opt/lareferencia-docker/
 ```
 
 The kibana is running at <http://localhost:5601/>. To remote access change the localhost to ip address of server.
@@ -78,8 +78,8 @@ The elastic search is running a <http://localhost:9200/>. to remote access chang
 Testing code:
 
 ```bash
-sudo docker exec -ti lareferencia-lareferencia-1 bash
-/home/lareferencia/codigo/lrharvester/lareferencia-entity-shell/entity-shell.jar
+sudo docker exec -ti ibict-lareferencia-1 bash
+/home/lareferencia/codigo/lrharvester/lareferencia-platform/lareferencia-shell/entity-shell.jar
 database_info
 ```
 

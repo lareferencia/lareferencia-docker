@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- indexing configurations, maybe we can integrate search configurations
+	here under a search tag -->
+<entity-indexing-config>
+<!-- Each indexed entity can be configured separately -->
+<indexed-entity name="patents" source-type="Patent">
+
+<index-fields>
+  <index-field name="brcrisNumber" source-field="identifier.brcris" />
+  <index-field name="lattesNumber" source-field="identifier.lattes" />
+  <index-field name="espacenetNumber" source-field="identifier.espacenet" />
+  <index-field name="kindCode" source-field="kindCode" />
+  <index-field name="espacenetTitle" source-field="title.espacenet" />
+  <index-field name="lattestitle" source-field="title.lattes" />
+  <index-field name="country" source-field="countryCode" />
+  <index-field name="depositDate" source-field="depositDate" />
+  <index-field name="publicationDate" source-field="publicationDate" />
+  <index-field name="inventor" source-field="inventor" />
+  <index-field name="applicant" source-field="applicant" />
+  <index-field name="ipcClassificationSeq" source-field="classification.ipc"
+    filter="subfields-format"
+    filter-subfields="sequence,text"
+    filter-format="%s-%s" />
+  <index-field name="ipcClassification" source-field="classification.ipc"
+    filter="subfields-format"
+    filter-subfields="text"
+    filter-format="%s" />
+  <index-field name="lattesAbstract" source-field="abstract.lattes" />
+  <index-field name="espacenetAbstract" source-field="abstract.espacenet" />
+  <index-field name="familyNumber" source-field="originatesFrom" />
+  <index-field name="alternateIdentifier" source-field="alternateIdentifier"
+    filter="subfields-format"
+    filter-subfields="country,number,kind"
+    filter-format="%s%s%s" />
+</index-fields>
+
+<index-nested-entities>
+
+  <indexed-entity name="inventorEntity" source-type="Person" source-relation="Inventor">
+    <index-fields>
+      <index-field name="idLattes" source-field="identifier.lattes" />
+      <index-field name="name" source-field="name" />
+    </index-fields>
+  </indexed-entity>
+
+  <indexed-entity name="depositorEntity" source-type="Person" source-relation="Depositor">
+    <index-fields>
+      <index-field name="idLattes" source-field="identifier.lattes" />
+      <index-field name="name" source-field="name" />
+    </index-fields>
+  </indexed-entity>
+
+  <indexed-entity name="applicantEntity" source-type="OrgUnit" source-relation="Applicant">
+    <index-fields>
+      <index-field name="name" source-field="name" />
+    </index-fields>
+  </indexed-entity>
+
+</index-nested-entities>
