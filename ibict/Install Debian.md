@@ -65,7 +65,7 @@ To install lareferencia, run the following command, REMEMBER TO CHANGE USER AND 
   cd ibict
   ./docker-compose.sh build
   docker exec -ti ibict-lareferencia-1 bash
-  ./installcode.sh
+  ./installcode.sh <user> <password>
   exit
   ./docker-compose.sh permissions
   chmod -R 777 /opt/lareferencia-docker/
@@ -79,7 +79,7 @@ Testing code:
 
 ```bash
 sudo docker exec -ti ibict-lareferencia-1 bash
-/home/lareferencia/codigo/lrharvester/lareferencia-platform/lareferencia-shell/entity-shell.jar
+/home/lareferencia/codigo/lrharvester/lareferencia-plataform/lareferencia-shell/entity-shell.jar
 database_info
 ```
 
