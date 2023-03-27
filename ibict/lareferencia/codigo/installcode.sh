@@ -40,16 +40,15 @@ mkdir -p lrharvester
 echo "Changing diretory to lrharvester"
 cd lrharvester || exit
 echo "Downloading lrharvester"
-git config --global credential.helper cache
-git clone --recursive https://$user:$password@github.com/lareferencia/lareferencia-platform.git
+#git config --global credential.helper cache
+git clone https://$user:$password@github.com/lareferencia/lareferencia-platform.git
 echo "Changing directory to lrharvester-platform"
 cd lareferencia-platform || exit
 echo "Cloning all submodules"
-git submodule update --init --recursive
-sed -i "s/git pull/git pull origin main/g" pull-all.sh
-sed -i "s/github.com/$user:$password@github.com/g" pull_and_build.sh
+ssh-keygen -f "/root/.ssh/known_hosts" -R "github.com"
+bash sync-modules.sh
 echo "Installing lrharvester"
-bash pull_and_build.sh ibict
+bash build.sh ibict
 echo "Finished installation"
 pwd
 echo "Adjusting configurations"
