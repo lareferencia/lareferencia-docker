@@ -45,7 +45,8 @@ git clone https://$user:$password@github.com/lareferencia/lareferencia-platform.
 echo "Changing directory to lrharvester-platform"
 cd lareferencia-platform || exit
 echo "Cloning all submodules"
-ssh-keygen -f "/root/.ssh/known_hosts" -R "github.com"
+sed -i "s/git@github/https:\/\/$user:$password@github/g" .gitmodules
+sed -i "s/git@github/https:\/\/$user:$password@github/g" .git/config
 bash sync-modules.sh
 echo "Installing lrharvester"
 bash build.sh ibict
