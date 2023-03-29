@@ -45,6 +45,8 @@ git clone https://$user:$password@github.com/lareferencia/lareferencia-platform.
 echo "Changing directory to lrharvester-platform"
 cd lareferencia-platform || exit
 echo "Cloning all submodules"
+sed -i "s/.com:/.com\//g" .gitmodules
+sed -i "s/.com:/.com\//g" .git/config
 sed -i "s/^\turl.*/&.git/g" .gitmodules
 sed -i "s/^\turl.*/&.git/g" .git/config
 sed -i "s/git@github/https:\/\/$user:$password@github/g" .gitmodules
