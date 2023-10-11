@@ -4,3 +4,7 @@ postgres/postgres_data/**
 solr/cores/oai/data/**
 solr/cores/entity/data/**
 solr/cores/vstats/data/**
+solr.v9/cores/oai/data/**
+solr.v9/cores/entity/data/**
+solr.v9/cores/vstats/data/**
+

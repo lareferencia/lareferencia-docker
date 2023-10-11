@@ -1,0 +1,106 @@
+<?xml version="1.0" ?>
+
+<!--
+  ~   Copyright (c) 2013-2022. LA Referencia / Red CLARA and others
+  ~
+  ~   This program is free software: you can redistribute it and/or modify
+  ~   it under the terms of the GNU Affero General Public License as published by
+  ~   the Free Software Foundation, either version 3 of the License, or
+  ~   (at your option) any later version.
+  ~
+  ~   This program is distributed in the hope that it will be useful,
+  ~   but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~   GNU Affero General Public License for more details.
+  ~
+  ~   You should have received a copy of the GNU Affero General Public License
+  ~   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  ~
+  ~   This file is part of LA Referencia software platform LRHarvester v4.x
+  ~   For any further information please contact Lautaro Matas <lmatas@gmail.com>
+  -->
+
+<schema name="Entity" version="1.0">
+
+  <uniqueKey>id</uniqueKey>
+  <fieldType name="boolean" class="solr.BoolField" sortMissingLast="true"/>
+  <fieldType name="long" class="solr.TrieLongField" positionIncrementGap="0" precisionStep="0"/>
+  <fieldType name="string" class="solr.StrField" omitNorms="true" sortMissingLast="true"/>
+  <fieldType name="date" class="solr.DatePointField" sortMissingLast="true" omitNorms="true"/>
+  <fieldType name="date_range" class="solr.DateRangeField" sortMissingLast="true" omitNorms="true"/>
+  
+  <fieldType name="text_general" class="solr.TextField" positionIncrementGap="100">
+    <analyzer type="index">
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+    </analyzer>
+    <analyzer type="query">
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+	  <filter class="solr.StopFilterFactory" words="stopwords.txt" ignoreCase="true"/>
+	  <filter class="solr.SynonymFilterFactory" synonyms="synonyms.txt" ignoreCase="true" expand="true"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+    </analyzer>
+  </fieldType>
+
+  <fieldType name="text_general_por" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+	  <filter class="solr.StopFilterFactory" format="snowball" words="lang/stopwords_por.txt" ignoreCase="true"/>
+	  <filter class="solr.SynonymFilterFactory" synonyms="lang/synonyms_por.txt" ignoreCase="true" expand="true"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+	  <filter class="solr.PortugueseLightStemFilterFactory"/>
+    </analyzer>
+  </fieldType>
+  
+  <fieldType name="text_general_spa" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+	  <filter class="solr.StopFilterFactory" format="snowball" words="lang/stopwords_spa.txt" ignoreCase="true"/>
+	  <filter class="solr.SynonymFilterFactory" synonyms="lang/synonyms_spa.txt" ignoreCase="true" expand="true"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+	  <filter class="solr.SpanishLightStemFilterFactory"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="text_general_eng" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+	  <filter class="solr.StopFilterFactory" words="lang/stopwords_eng.txt" ignoreCase="true"/>
+	  <filter class="solr.SynonymFilterFactory" synonyms="lang/synonyms_eng.txt" ignoreCase="true" expand="true"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+    </analyzer>
+  </fieldType>
+  <fieldType name="text_general_fra" class="solr.TextField" positionIncrementGap="100">
+    <analyzer>
+      <tokenizer class="solr.StandardTokenizerFactory"/>
+	  <filter class="solr.StopFilterFactory" words="lang/stopwords_fra.txt" ignoreCase="true"/>
+	  <filter class="solr.SynonymFilterFactory" synonyms="lang/synonyms_fra.txt" ignoreCase="true" expand="true"/>
+      <filter class="solr.LowerCaseFilterFactory"/>
+    </analyzer>
+  </fieldType>  
+  
+  <field name="_version_" type="long" multiValued="false" indexed="true" stored="true"/>
+  
+  <field name="id" type="string" multiValued="false" indexed="true" required="true" stored="true"/>
+  <field name="semantic_id" type="string" multiValued="true" indexed="true" stored="true"/>
+  <field name="provenance_id" type="string" multiValued="true" indexed="true" stored="true"/>
+  
+  <field name="type" type="string" multiValued="false" indexed="true" stored="true"/>
+
+  <dynamicField name="fs.*" type="string" multiValued="true" indexed="true" stored="true"/>
+  <dynamicField name="is.*" type="string" multiValued="true" indexed="true" stored="true"/>
+  <dynamicField name="ft.*" type="text_general" multiValued="true" indexed="true" stored="false"/>
+  <dynamicField name="sf.*" type="string" multiValued="false" indexed="true" stored="false"/>
+  <dynamicField name="df.*" type="date" multiValued="true" indexed="true" stored="true" docValues="true"/>
+  <dynamicField name="dr.*" type="date_range" multiValued="true" indexed="true" stored="false"/>
+ 
+   <!-- lang -->
+  <dynamicField name="por.*" type="text_general_por" multiValued="true" indexed="true" stored="true"/>
+  <dynamicField name="spa.*" type="text_general_spa" multiValued="true" indexed="true" stored="true"/>
+  <dynamicField name="eng.*" type="text_general_eng" multiValued="true" indexed="true" stored="true"/>
+  <dynamicField name="fra.*" type="text_general_fra" multiValued="true" indexed="true" stored="true"/>
+  <dynamicField name="und.*" type="text_general" multiValued="true" indexed="true" stored="true"/>
+ 
+  <copyField source="fs.*" dest="ft.*" maxChars="25000"/>
+ 
+</schema>
+

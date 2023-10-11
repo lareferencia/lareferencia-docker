@@ -1,0 +1,1 @@
+# Empty file for stopwords, words that should be ignored within Sorl searches
