@@ -11,14 +11,14 @@ Add Docker’s official GPG key:
 
 ```bash
 sudo mkdir -p /etc/apt/keyrings
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
 ```
 
 Use the following command to set up the repository:
 
 ```bash
 echo \
-  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian \
   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 ```
 
@@ -35,12 +35,14 @@ If you receive a GPG error when running `apt-get update`, run the following comm
 sudo chmod a+r /etc/apt/keyrings/docker.gpg
 ```
 
-Docker provides a convenience script at get.docker.com to install Docker into development environments quickly and non-interactively
+<s>Docker provides a convenience script at get.docker.com to install Docker into development environments quickly and non-interactively
 
 ```bash
 curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh get-docker.sh
 ```
+</s>
+
 
 Install portainer at 9443 port to acess the containers remotely
 
@@ -54,20 +56,19 @@ docker run -d -p 8000:8000 -p 9443:9443 --name portainer \
 
 The portainer is running at <http://localhost:9443/>. To remote access, change the localhost to ip address of server. Enter in link to configure portainer to manager the docker remotely.
 
-
 To install lareferencia, run the following command, REMEMBER TO CHANGE USER AND PASSWORD:
 
 ```bash
   cd /opt
   git clone https://<user>:<password>@github.com/lareferencia/lareferencia-docker.git
   cd lareferencia-docker
-  cd lareferencia
+  cd ibict
   ./docker-compose.sh build
-  docker exec -ti lareferencia-lareferencia-1 bash
-  ./installcode.sh
+  docker exec -ti ibict-lareferencia-1 bash
+  ./installcode.sh <user> <password>
+  exit
   ./docker-compose.sh permissions
   chmod -R 777 /opt/lareferencia-docker/
-  exit
 ```
 
 The kibana is running at <http://localhost:5601/>. To remote access change the localhost to ip address of server.
@@ -77,8 +78,8 @@ The elastic search is running a <http://localhost:9200/>. to remote access chang
 Testing code:
 
 ```bash
-docker exec -ti lareferencia-lareferencia-1 bash
-/home/lareferencia/codigo/lrharvester/lareferencia-entity-shell/entity-shell.jar
+sudo docker exec -ti ibict-lareferencia-1 bash
+/home/lareferencia/codigo/lrharvester/lareferencia-plataform/lareferencia-shell/entity-shell.jar
 database_info
 ```
 

@@ -1,5 +1,7 @@
 #!/bin/bash
-
+echo "Starting installation"
+echo "Changing owner to root"
+chown root:root *
 # model=/home/lareferencia/lrharvester/lareferencia-entity-shell/config/application.properties.model
 # properties=/home/lareferencia/lrharvester/lareferencia-entity-shell/config/application.properties
 # if [ $# -ne 0 ]; then
@@ -38,16 +40,24 @@ mkdir -p lrharvester
 echo "Changing diretory to lrharvester"
 cd lrharvester || exit
 echo "Downloading lrharvester"
+#git config --global credential.helper cache
 git clone https://$user:$password@github.com/lareferencia/lareferencia-platform.git
 echo "Changing directory to lrharvester-platform"
 cd lareferencia-platform || exit
-sed "s/github.com/$user:$password@github.com/g" pull_and_build.sh > pull_and_build.sh.tmp && mv pull_and_build.sh.tmp pull_and_build.sh
+echo "Cloning all submodules"
+sed -i "s/.com:/.com\//g" .gitmodules
+sed -i "s/.com:/.com\//g" .git/config
+sed -i "s/^\turl.*/&.git/g" .gitmodules
+sed -i "s/^\turl.*/&.git/g" .git/config
+sed -i "s/git@github/https:\/\/$user:$password@github/g" .gitmodules
+sed -i "s/git@github/https:\/\/$user:$password@github/g" .git/config
+bash sync-modules.sh
 echo "Installing lrharvester"
-bash pull_and_build.sh ibict
+bash build.sh ibict
 echo "Finished installation"
-
+pwd
 echo "Adjusting configurations"
-cd .. || exit
+# cd .. || exit
 sed -i "s/localhost:5432/postgres:5432/g" $model
 cp $model $properties
 sed -i "s/elastic.host=localhost/elastic.host=elasticsearch/g" $properties
